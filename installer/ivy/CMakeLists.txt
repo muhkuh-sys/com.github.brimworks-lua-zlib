@@ -6,8 +6,8 @@ INCLUDE(ExternalProject)
 INCLUDE(../../cmake/version.cmake)
 
 
-GET_FILENAME_COMPONENT(MUHKUH_WIN32_INSTALL "../../build_windows32/lua-zlib/install" ABSOLUTE)
-GET_FILENAME_COMPONENT(MUHKUH_WIN64_INSTALL "../../build_windows64/lua-zlib/install" ABSOLUTE)
+GET_FILENAME_COMPONENT(MUHKUH_WIN32_INSTALL "../../build_windows32/lua-zlib/install/share/lua/cmod" ABSOLUTE)
+GET_FILENAME_COMPONENT(MUHKUH_WIN64_INSTALL "../../build_windows64/lua-zlib/install/share/lua/cmod" ABSOLUTE)
 
 # The version number is a combination of the LUA version and the packaging.
 # The major and minor numbers are taken from the LUA version, i.e. LUA 5.1.5
