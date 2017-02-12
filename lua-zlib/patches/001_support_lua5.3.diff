@@ -1,0 +1,15 @@
+diff -uNr lua-zlib-0.4_org/lua_zlib.c lua-zlib-0.4_patched/lua_zlib.c
+--- lua-zlib-0.4_org/lua_zlib.c	2015-01-02 05:56:47.000000000 +0100
++++ lua-zlib-0.4_patched/lua_zlib.c	2017-02-12 16:09:15.643355790 +0100
+@@ -6,9 +13,9 @@
+ #include <zlib.h>
+ 
+ /*
+- * ** compatibility with Lua 5.2
++ * ** compatibility with Lua 5.2 and Lua 5.3
+  * */
+-#if (LUA_VERSION_NUM == 502)
++#if (LUA_VERSION_NUM == 502) || (LUA_VERSION_NUM == 503)
+ #undef luaL_register
+ #define luaL_register(L,n,f) \
+                { if ((n) == NULL) luaL_setfuncs(L,f,0); else luaL_newlib(L,f); }

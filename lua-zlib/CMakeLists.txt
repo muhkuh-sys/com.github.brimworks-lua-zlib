@@ -36,12 +36,9 @@ IF((${BUILDCFG_ONLY_JONCHKI_CFG} STREQUAL "OFF"))
 	MESSAGE("1 LUA_LIBRARIES = ${LUA_LIBRARIES}")
 
 
-	FIND_PACKAGE("net.zlib-zlib" REQUIRED)
+	FIND_PACKAGE(net.zlib-zlib REQUIRED CONFIG)
 	GET_TARGET_PROPERTY(ZLIB_LIBRARY net.zlib-zlib::zlibstatic LOCATION)
-	GET_TARGET_PROPERTY(ZLIB_INCLUDE_DIR net.zlib-zlib::zlibstatic INTERFACE_INCLUDE_DIRECTORIES)
-
-	MESSAGE("2 LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}")
-	MESSAGE("2 LUA_LIBRARIES = ${LUA_LIBRARIES}")
+	SET(ZLIB_INCLUDE_DIR ${net.zlib-zlib_INCLUDE_DIR})
 
 	# Build the project.
 	SET(SUB_CMAKE_ARGS "")
@@ -64,7 +61,8 @@ IF((${BUILDCFG_ONLY_JONCHKI_CFG} STREQUAL "OFF"))
 	                    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/lua-zlib-${VERSION_EXTERNAL}
 	                    URL ${CMAKE_CURRENT_SOURCE_DIR}/lua-zlib-${VERSION_EXTERNAL}.tar.gz
 	                    URL_HASH SHA1=a961b4130480cc552f3f76bdd4c5052ca7202305
-	                    PATCH_COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/copy_over ${CMAKE_CURRENT_BINARY_DIR}/lua-zlib-${VERSION_EXTERNAL}/src/TARGET_lua_zlib
+	                    PATCH_COMMAND "${PYTHON_EXECUTABLE}" ${CMAKE_HOME_DIRECTORY}/cmake/tools/apply_patches.py --working-folder ${CMAKE_CURRENT_BINARY_DIR}/lua-zlib-${VERSION_EXTERNAL}/src/TARGET_lua_zlib --copy-folder ${CMAKE_CURRENT_SOURCE_DIR}/copy_over --patch-folder ${CMAKE_CURRENT_SOURCE_DIR}/patches --strip 1
+#	                    PATCH_COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/copy_over ${CMAKE_CURRENT_BINARY_DIR}/lua-zlib-${VERSION_EXTERNAL}/src/TARGET_lua_zlib
 	                    CMAKE_ARGS ${SUB_CMAKE_ARGS}
 	                    INSTALL_COMMAND ${CMAKE_MAKE_PROGRAM} install
 	)

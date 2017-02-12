@@ -43,6 +43,7 @@ endif()
   SET_TARGET_PROPERTIES(cmod_zlib PROPERTIES PREFIX "")
   SET_TARGET_PROPERTIES(cmod_zlib PROPERTIES OUTPUT_NAME zlib)
   TARGET_LINK_LIBRARIES(cmod_zlib ${ZLIB_LIBRARIES} ${LUA_LIBRARIES})
+  TARGET_COMPILE_DEFINITIONS(cmod_zlib PRIVATE LUA_COMPAT_5_2)
 # / build zlib.so
 
 # Define how to test zlib.so:
