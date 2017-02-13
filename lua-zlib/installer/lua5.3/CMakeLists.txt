@@ -74,3 +74,13 @@ INSTALL(FILES install.lua
 CONFIGURE_FILE(lua-zlib.xml
                ${CPACK_OUTPUT_FILE_PREFIX}/lua5.3-lua-zlib-${PROJECT_VERSION}.xml
                @ONLY)
+
+#-----------------------------------------------------------------------------
+#
+# Filter the pom.xml file.
+#
+SET(POM_ARTIFACT_ID  "lua5.3-lua-zlib")
+SET(POM_GROUP_ID     "com.github.brimworks")
+SET(POM_VERSION      "${PROJECT_VERSION}")
+SET(POM_PACKAGING    "zip")
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/pom.xml ${CPACK_OUTPUT_FILE_PREFIX}/pom.xml)
