@@ -4,18 +4,17 @@
 	      module="lua-zlib"
 	      artifact="lua5.1-lua-zlib"
 	      version="@PROJECT_VERSION@"
-	      vcs-id="@PROJECT_VERSION_VCS@">
+	      vcs-id="@PROJECT_VERSION_VCS@"
+	      extension="tar.xz">
 		<license name="MIT"/>
 		<author name="Brian Maher" url="https://github.com/brimworks/lua-zlib" />
 		<description>
 			lua-zlib from https://github.com/brimworks/lua-zlib .
 		</description>
 	</info>
-	<build-dependencies>
-		<dependency group="net.zlib" module="zlib" artifact="zlib"   version="1.2.8.1"/>
-		<dependency group="org.lua"  module="lua"  artifact="lua5.1" version="5.1.5.1"/>
-	</build-dependencies>
 	<dependencies>
-		<dependency group="org.lua" module="lua" artifact="lua5.1"/>
+		<build-dependency group="net.zlib" module="zlib" artifact="zlib"   version="1.2.11.1"/>
+		<build-dependency group="org.lua"  module="lua"  artifact="lua" version="5.1"/>
+		<dependency group="org.lua" module="lua" artifact="lua"/>
 	</dependencies>
 </jonchki-artifact>

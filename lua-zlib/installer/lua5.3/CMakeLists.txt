@@ -1,19 +1,19 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.7)
 
-PROJECT("com.github.brimworks-lua53-zlib-artifact")
+PROJECT("com.github.brimworks-lua5.3-zlib-artifact")
 
 INCLUDE(../../../cmake/version.cmake)
 
 SET(INSTALL_WINDOWS_X86        "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/windows_x86")
 SET(INSTALL_WINDOWS_X86_64     "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/windows_x86_64")
-SET(INSTALL_UBUNTU_1204_X86    "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1204_x86")
-SET(INSTALL_UBUNTU_1204_X86_64 "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1204_x86_64")
 SET(INSTALL_UBUNTU_1404_X86    "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1404_x86")
 SET(INSTALL_UBUNTU_1404_X86_64 "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1404_x86_64")
 SET(INSTALL_UBUNTU_1604_X86    "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1604_x86")
 SET(INSTALL_UBUNTU_1604_X86_64 "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1604_x86_64")
-SET(INSTALL_UBUNTU_1610_X86    "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1610_x86")
-SET(INSTALL_UBUNTU_1610_X86_64 "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1610_x86_64")
+SET(INSTALL_UBUNTU_1704_X86    "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1704_x86")
+SET(INSTALL_UBUNTU_1704_X86_64 "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1704_x86_64")
+SET(INSTALL_UBUNTU_1710_X86    "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1710_x86")
+SET(INSTALL_UBUNTU_1710_X86_64 "${CMAKE_CURRENT_SOURCE_DIR}/../../../build/lua5.3/ubuntu_1710_x86_64")
 
 # Get the version number.
 INCLUDE(${INSTALL_WINDOWS_X86}/com.github.brimworks-lua-zlib.version)
@@ -23,7 +23,7 @@ SET(CPACK_OUTPUT_FILE_PREFIX targets/jonchki/repository/com/github/brimworks/lua
 SET(CPACK_INCLUDE_TOPLEVEL_DIRECTORY FALSE)
 SET(CPACK_PACKAGE_FILE_NAME "lua5.3-lua-zlib-${PROJECT_VERSION}")
 
-SET(CPACK_GENERATOR "ZIP")
+SET(CPACK_GENERATOR "TXZ")
 INCLUDE(CPack)
 
 
@@ -34,17 +34,17 @@ INCLUDE(CPack)
 INSTALL(FILES ${INSTALL_WINDOWS_X86}/share/lua/cmod/zlib.dll
         DESTINATION windows_x86/lua_plugins)
 
-INSTALL(FILES ${INSTALL_UBUNTU_1204_X86}/share/lua/cmod/zlib.so
-        DESTINATION ubuntu_1204_x86/lua_plugins)
-
 INSTALL(FILES ${INSTALL_UBUNTU_1404_X86}/share/lua/cmod/zlib.so
         DESTINATION ubuntu_1404_x86/lua_plugins)
 
 INSTALL(FILES ${INSTALL_UBUNTU_1604_X86}/share/lua/cmod/zlib.so
         DESTINATION ubuntu_1604_x86/lua_plugins)
 
-INSTALL(FILES ${INSTALL_UBUNTU_1610_X86}/share/lua/cmod/zlib.so
-        DESTINATION ubuntu_1610_x86/lua_plugins)
+INSTALL(FILES ${INSTALL_UBUNTU_1704_X86}/share/lua/cmod/zlib.so
+        DESTINATION ubuntu_1704_x86/lua_plugins)
+
+INSTALL(FILES ${INSTALL_UBUNTU_1710_X86}/share/lua/cmod/zlib.so
+        DESTINATION ubuntu_1710_x86/lua_plugins)
 
 
 #-----------------------------------------------------------------------------
@@ -54,17 +54,17 @@ INSTALL(FILES ${INSTALL_UBUNTU_1610_X86}/share/lua/cmod/zlib.so
 INSTALL(FILES ${INSTALL_WINDOWS_X86_64}/share/lua/cmod/zlib.dll
         DESTINATION windows_x86_64/lua_plugins)
 
-INSTALL(FILES ${INSTALL_UBUNTU_1204_X86_64}/share/lua/cmod/zlib.so
-        DESTINATION ubuntu_1204_x86_64/lua_plugins)
-
 INSTALL(FILES ${INSTALL_UBUNTU_1404_X86_64}/share/lua/cmod/zlib.so
         DESTINATION ubuntu_1404_x86_64/lua_plugins)
 
 INSTALL(FILES ${INSTALL_UBUNTU_1604_X86_64}/share/lua/cmod/zlib.so
         DESTINATION ubuntu_1604_x86_64/lua_plugins)
 
-INSTALL(FILES ${INSTALL_UBUNTU_1610_X86_64}/share/lua/cmod/zlib.so
-        DESTINATION ubuntu_1610_x86_64/lua_plugins)
+INSTALL(FILES ${INSTALL_UBUNTU_1704_X86_64}/share/lua/cmod/zlib.so
+        DESTINATION ubuntu_1704_x86_64/lua_plugins)
+
+INSTALL(FILES ${INSTALL_UBUNTU_1710_X86_64}/share/lua/cmod/zlib.so
+        DESTINATION ubuntu_1710_x86_64/lua_plugins)
 
 #-----------------------------------------------------------------------------
 
@@ -82,5 +82,5 @@ CONFIGURE_FILE(lua-zlib.xml
 SET(POM_ARTIFACT_ID  "lua5.3-lua-zlib")
 SET(POM_GROUP_ID     "com.github.brimworks")
 SET(POM_VERSION      "${PROJECT_VERSION}")
-SET(POM_PACKAGING    "zip")
+SET(POM_PACKAGING    "tar.xz")
 CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/pom.xml ${CPACK_OUTPUT_FILE_PREFIX}/pom.xml)
